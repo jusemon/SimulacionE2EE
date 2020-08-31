@@ -1,0 +1,37 @@
+<nb-layout>
+  <nb-layout-header fixed>Simulación E2EE FUCN</nb-layout-header>
+
+  <nb-sidebar>
+    <nb-card size="small">
+      <nb-list>
+        <nb-list-item *ngFor="let user of users">
+          <nb-user [name]="user.name" [picture]="user.picture" (click)="onStartConversation(user.name)">
+          </nb-user>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <div>
+      <h3>Bienvenido {{user}}</h3>
+    </div>
+    <div *ngIf="selectedConversation">
+      <nb-chat title="Conversación" size="large">
+        <nb-chat-message *ngFor="let msg of selectedConversation.messages"
+                          [type]="msg.type"
+                          [message]="msg.text"
+                          [reply]="msg.reply"
+                          [sender]="msg.user.name"
+                          [date]="msg.date"
+                          [quote]="msg.quote"
+                          [latitude]="msg.latitude"
+                          [longitude]="msg.longitude"
+                          [avatar]="msg.user.avatar">
+        </nb-chat-message>
+        <nb-chat-form (send)="onSendMessage($event)">
+        </nb-chat-form>
+      </nb-chat>
+    </div>
+  </nb-layout-column>
+</nb-layout>
