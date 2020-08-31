@@ -22,9 +22,9 @@ El proyecto requiere .net core instalado en el computador, se debe compilar y ej
 
 ¿Cómo se logró?
 
-- Cuando se abre una ventana se genera un usuario aleatorio con su propio nombre, clave pública y clave privada (ver app.component.ts, líneas 33, 34 y 35)
+- Cuando se abre una ventana se genera un usuario aleatorio con su propio nombre, clave pública y clave privada ([ver app.component.ts, líneas 33, 34 y 35](https://github.com/jusemon/SimulacionE2EE/blob/611dbf199c2f79cf15abfedcec63a1231d9c2437/ClientApp/src/app/app.component.ts#L33-L35))
 - El sistema inmediatamente envía el nombre del usuario al servidor, para así mostrar este usuario a los demás disponibles
-- El usuario da click sobre cualquiera de los demás usuarios disponibles, esta acción activa un evento donde se comparte la clave pública entre ambos usuarios (ver ChatHub.cs, líneas 33 y 34)
-- Se reciben las respectivas claves públicas y se almacenan localmente (ver app.component.ts, líneas 101 al 111)
-- Ahora la comunicación es segura, internamente cada usuario antes de enviar un mensaje lo cifra con la clave pública del destinatario (ver app.component.ts, línea 148)
-- Cuando el destinatario recibe el mensaje, este es decifrado con su clave privada (ver app.component.ts, línea 74)
+- El usuario da click sobre cualquiera de los demás usuarios disponibles, esta acción activa un evento donde se comparte la clave pública entre ambos usuarios ([ver ChatHub.cs, líneas 33 y 34](https://github.com/jusemon/SimulacionE2EE/blob/611dbf199c2f79cf15abfedcec63a1231d9c2437/Hubs/ChatHub.cs#L33-L34))
+- Se reciben las respectivas claves públicas y se almacenan localmente ([ver app.component.ts, líneas 101 al 111](https://github.com/jusemon/SimulacionE2EE/blob/611dbf199c2f79cf15abfedcec63a1231d9c2437/ClientApp/src/app/app.component.ts#L101-L111))
+- Ahora la comunicación es segura, internamente cada usuario antes de enviar un mensaje lo cifra con la clave pública del destinatario ([ver app.component.ts, línea 148](https://github.com/jusemon/SimulacionE2EE/blob/611dbf199c2f79cf15abfedcec63a1231d9c2437/ClientApp/src/app/app.component.ts#L148))
+- Cuando el destinatario recibe el mensaje, este es decifrado con su clave privada ([ver app.component.ts, línea 74](https://github.com/jusemon/SimulacionE2EE/blob/611dbf199c2f79cf15abfedcec63a1231d9c2437/ClientApp/src/app/app.component.ts#L74))
